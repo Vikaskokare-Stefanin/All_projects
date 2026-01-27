@@ -1,0 +1,93 @@
+_schema-version: "3.2"
+ID: NewMTA
+version: 0.0.1
+modules:
+- name: NewMTA-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: NewMTA-destination-service
+    parameters:
+      content-target: true
+  - name: NewMTA_html_repo_host
+    parameters:
+      service-key:
+        name: NewMTA_html_repo_host-key
+  - name: uaa_NewMTA
+    parameters:
+      service-key:
+        name: uaa_NewMTA-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: ManagedApps_NewMTA_html_repo_host
+          ServiceInstanceName: NewMTA-html5-app-host-service
+          ServiceKeyName: NewMTA_html_repo_host-key
+          sap.cloud.service: ManagedApps
+        - Authentication: OAuth2UserTokenExchange
+          Name: ManagedApps_uaa_NewMTA
+          ServiceInstanceName: NewMTA-xsuaa-service
+          ServiceKeyName: uaa_NewMTA-key
+          sap.cloud.service: ManagedApps
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: NewMTA-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: NewMTA_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - project1comproject1.zip
+      name: project1comproject1
+      target-path: resources/
+- name: project1comproject1
+  type: html5
+  path: project1
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: NewMTA-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: NewMTA-destination-service
+    service-plan: lite
+- name: NewMTA_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: NewMTA-html5-app-host-service
+    service-plan: app-host
+- name: uaa_NewMTA
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: NewMTA-xsuaa-service
+    service-plan: application
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

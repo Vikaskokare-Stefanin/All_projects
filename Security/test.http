@@ -1,0 +1,9 @@
+POST http://localhost:4004/odata/v4/catalog/Employee
+    Authorization: Basic vikas@gmail.com:vikas
+    Content-Type: application/json
+
+    {
+        "Name": "Vikas",
+        "Salary"     : 123456,
+        "department" : "Development"
+    }

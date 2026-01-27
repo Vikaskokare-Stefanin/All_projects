@@ -1,0 +1,306 @@
+<mvc:View
+    controllerName="sampleproject.com.sampleproject.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+    xmlns:m="sap.m"
+    height="100%"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <fb:FilterBar
+            id="filterbar"
+            persistencyKey="myPersKey"
+            useToolbar="false"
+            search=".onSearch"
+            filterChange=".onFilterChange"
+            afterVariantLoad=".onAfterVariantLoad"
+        >
+            <fb:filterItems>
+                <fb:FilterItem
+                    name="ComapnyCode"
+                    label="Comapny Code"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+                <fb:FilterItem
+                    name="Currency"
+                    label="Currency"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+
+                <fb:FilterItem
+                    name="TimePeriod"
+                    label="Time Period"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+
+                <fb:FilterItem
+                    name="ValueDate"
+                    label="Value Date"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+
+                <fb:FilterItem
+                    name="BankAccount"
+                    label="Bank  Account Hierarchy id"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+
+                <fb:FilterItem
+                    name="DispalyCurrency"
+                    label="Dispaly Currency"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+
+                <fb:FilterItem
+                    name="ExchRateType"
+                    label="Exch. Rate Type"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+
+                <fb:FilterItem
+                    name="snapshotTime"
+                    label="Snap Shot Time"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+                <fb:FilterItem
+                    name="Reconclliation"
+                    label="Reconclliation Status"
+                >
+                    <fb:control>
+                        <Input
+                            placeholder="Enter product"
+                            showSuggestion="true"
+                            showValueHelp="true"
+                            valueHelpRequest=".onValueHelpRequest"
+                        />
+                    </fb:control>
+                </fb:FilterItem>
+            </fb:filterItems>
+        </fb:FilterBar>
+
+        <!-- TAble -->
+
+        <VBox
+            id="vb1"
+            class="sapUiSmallMargin"
+        >
+            <Table
+                id="productTable"
+                inset="false"
+                items="{TableData>/Products}"
+                mode="SingleSelectLeft"
+                selectionChange="onSelectionChange"
+                growing="true"
+                growingThreshold="18"
+            >
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title
+                            text="Product Details"
+                            level="H2"
+                        />
+                        <ToolbarSpacer />
+                        <Button
+                            text="Add"
+                            press="onAddPress"
+                            icon="sap-icon://add"
+                        />
+                        <Button
+                            text="Delete"
+                            press="onDeletePress"
+                            icon="sap-icon://delete"
+                        />
+                        <Button
+                            text="Update"
+                            press="UpdatePress"
+                            icon="sap-icon://attachment-e-pub"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="c1">
+                        <Text
+                            id="t1"
+                            text="Product ID"
+                        />
+                    </Column>
+                    <Column id="c2">
+                        <Text
+                            id="t2"
+                            text="Product Name"
+                        />
+                    </Column>
+                    <Column id="c3">
+                        <Text
+                            id="t5"
+                            text="Supplier ID"
+                        />
+                    </Column>
+                    <Column id="c5">
+                        <Text
+                            id="t6"
+                            text="Category ID"
+                        />
+                    </Column>
+                    <Column id="c6">
+                        <Text
+                            id="t8"
+                            text="Quantity PerUnit"
+                        />
+                    </Column>
+                    <Column id="c7">
+                        <Text
+                            id="t9"
+                            text="Unit Price"
+                        />
+                    </Column>
+                    <Column id="c8">
+                        <Text
+                            id="t10"
+                            text="Units InStock"
+                        />
+                    </Column>
+                    <Column id="c9">
+                        <Text
+                            id="t11"
+                            text="Units OnOrder"
+                        />
+                    </Column>
+                    <Column id="c10">
+                        <Text
+                            id="t12"
+                            text="Reorder Level"
+                        />
+                    </Column>
+                    <Column id="c110">
+                        <Text
+                            id="t13"
+                            text="Editable"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem
+                        id="cl1"
+                        highlight="{= ${products>UnitPrice} > 10 ? 'Success' : 'Error' }"
+                    >
+                        <cells>
+                            <Text
+                                id="obj1"
+                                text="{TableData>ProductID}"
+                            />
+                            <Text
+                                id="tx14"
+                                text="{TableData>ProductName}"
+                            />
+                            <Text
+                                id="t15"
+                                text="{TableData>SupplierID}"
+                            />
+                            <Text
+                                id="tx16"
+                                text="{TableData>CategoryID}"
+                            />
+                            <Text
+                                id="t17"
+                                text="{TableData>QuantityPerUnit}"
+                            />
+                            <Text
+                                id="t18"
+                                text="{TableData>UnitPrice}"
+                            />
+                            <Text
+                                id="t19"
+                                text="{TableData>UnitsInStock}"
+                            />
+                            <Text
+                                id="t20"
+                                text="{TableData>UnitsOnOrder}"
+                            />
+                            <Text
+                                id="t21"
+                                text="{TableData>ReorderLevel}"
+                            />
+                            <Text
+                                id="t22"
+                                text="{TableData>editable}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+    </Page>
+</mvc:View>

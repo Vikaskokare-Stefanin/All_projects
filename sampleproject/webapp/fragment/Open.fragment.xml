@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Dialog
+        id="productDetailDialog"
+        title="Product Details"
+        class="sapUiResponsivePadding"
+        endButton="closeButton"
+    >
+        <content>
+            <f:SimpleForm
+                editable="false"
+                layout="ResponsiveGridLayout"
+            >
+                <Label text="Product ID" />
+                <Input value="{formBindModel>/ProductID}" />
+                <Label text="Product Name" />
+                <Input value="{formBindModel>/ProductName}" />
+                <Label text="Supplier ID" />
+                <Input value="{formBindModel>/SupplierID}" />
+                <Label text="Category ID" />
+                <Input value="{formBindModel>/CategoryID}" />
+                <Label text="Quantity Per Unit" />
+                <Input value="{formBindModel>/QuantityPerUnit}" />
+                <Label text="Unit Price" />
+                <Input value="{formBindModel>/UnitPrice}" />
+                <Label text="Units In Stock" />
+                <Input value="{formBindModel>/UnitsInStock}" />
+                <Label text="Units On Order" />
+                <Input value="{formBindModel>/UnitsOnOrder}" />
+                <Label text="Reorder Level" />
+                <Input value="{formBindModel>/ReorderLevel}" />
+                <Label text="Editable" />
+                <Input value="{formBindModel>/editable}" />
+            </f:SimpleForm>
+        </content>
+
+        <HBox>
+            <Button
+                id="Save"
+                text="Save"
+                press=".onSaveFragment"
+            />
+            <Button
+                id="closeButton"
+                text="Close"
+                press=".onCloseFragment"
+            />
+
+            <Button
+                id="Submit"
+                text="Submit"
+                press=".SubmitFragment"
+            />
+        </HBox>
+    </Dialog>
+</core:FragmentDefinition>

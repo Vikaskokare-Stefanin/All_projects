@@ -1,0 +1,493 @@
+<mvc:View
+    controllerName="wizarproject.com.wizarproject.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <NavContainer id="wizardNavContainer">
+            <pages>
+                <Page
+                    id="wizardContentPage"
+                    showHeader="false"
+                >
+                    <content>
+                        <Wizard
+                            id="CreateProductWizard"
+                            class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+                            complete="wizardCompletedHandler"
+                            showNextButton="true"
+                            stepActivate="ActivationButton"
+                            navigationChange=""
+                        >
+                            <WizardStep
+                                id="ProductTypeStep"
+                                title="About Our Company"
+                                validated="true"
+                                complete="FirstFunction"
+                            >
+                                <Text
+                                    class="sapUiSmallMarginBottom"
+                                    text="Stefanini is a global technology-consulting and IT-services company founded in 1987 in Brazil by entrepreneur Marco Stefanini. Wikipedia +2 Stefanini +2 .Over the past three decades, it has grown into a multinational firm with presence in more than 41 countries, and tens of thousands of employees worldwide.Stefanini +2 Stefanini +2 Stefanini helps businesses digitally transform — offering a wide portfolio of solutions including artificial intelligence (AI), cloud enablement, automation, analytics, modern enterprise applications, cybersecurity, infrastructure  digital workplace services, among others. Stefanini +2 Stefanini +2 They serve clients across a variety of industries — from manufacturing, retail, automotive, healthcare, finance — tailoring services to meet industry-specific needs.Stefanini +1 In many regions, including India, Stefanini provides services such as next-gen application development, SAP services, enterprise services, field services and digital application management. Stefanini Their approach is “co-creation”: they work collaboratively with clients to turn ideas into real business solutions — combining technology expertise with deep industry knowledge and human-centred thinking Stefanini."
+                                />
+                                <VBox class="sapUiSmallMargin">
+                                    <f:Form
+                                        id="FormChange354"
+                                        editable="true"
+                                    >
+                                        <f:title>
+                                            <core:Title text="Details" />
+                                        </f:title>
+                                        <f:layout>
+                                            <f:ResponsiveGridLayout
+                                                labelSpanXL="3"
+                                                labelSpanL="3"
+                                                labelSpanM="3"
+                                                labelSpanS="12"
+                                                adjustLabelSpan="false"
+                                                emptySpanXL="4"
+                                                emptySpanL="4"
+                                                emptySpanM="4"
+                                                emptySpanS="0"
+                                                columnsXL="1"
+                                                columnsL="1"
+                                                columnsM="1"
+                                                singleContainerFullSize="false"
+                                            />
+                                        </f:layout>
+                                        <f:formContainers>
+                                            <f:FormContainer>
+                                                <f:formElements>
+                                                    <f:FormElement label="Name">
+                                                        <f:fields>
+                                                            <Input
+                                                                value="{SupplierName}"
+                                                                id="name"
+                                                            />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement
+                                                        label="Street"
+                                                    >
+                                                        <f:fields>
+                                                            <Input
+                                                                value="{Street}"
+                                                            />
+                                                            <Input
+                                                                value="{HouseNumber}"
+                                                            >
+                                                                <layoutData>
+                                                                    <l:GridData
+                                                                        span="XL1 L2 M2 S4"
+                                                                    />
+                                                                </layoutData>
+                                                            </Input>
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement
+                                                        label="ZIP Code/City"
+                                                    >
+                                                        <f:fields>
+                                                            <Input
+                                                                value="{ZIPCode}"
+                                                            >
+                                                                <layoutData>
+                                                                    <l:GridData
+                                                                        span="XL1 L2 M2 S4"
+                                                                    />
+                                                                </layoutData>
+                                                            </Input>
+                                                            <Input
+                                                                value="{City}"
+                                                            />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement
+                                                        label="Country"
+                                                    >
+                                                        <f:fields>
+                                                            <Select
+                                                                id="country"
+                                                                selectedKey="{Country}"
+                                                            >
+                                                                <items>
+                                                                    <core:Item
+                                                                        text="England"
+                                                                        key="England"
+                                                                    />
+                                                                    <core:Item
+                                                                        text="Germany"
+                                                                        key="Germany"
+                                                                    />
+                                                                    <core:Item
+                                                                        text="USA"
+                                                                        key="USA"
+                                                                    />
+                                                                </items>
+                                                            </Select>
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                </f:formElements>
+                                            </f:FormContainer>
+                                        </f:formContainers>
+                                    </f:Form>
+                                </VBox>
+                            </WizardStep>
+                            <WizardStep
+                                id="ProductInfoStep"
+                                validated="true"
+                                title="Company Services"
+                                activate="additionalInfoValidation"
+                            >
+                                <Text
+                                    text="Application Development   Modernization – Building, upgrading, and maintaining enterprise applications.
+
+                                            Digital Workplace Services – End-user support, service desk, device management, and workplace automation.
+
+                                            Infrastructure   Cloud Services – Cloud migration, infrastructure management, and hybrid IT support.
+
+                                            Cybersecurity Solutions – Threat monitoring, vulnerability management, and security consulting.
+
+                                            Artificial Intelligence   Automation – AI chatbots, RPA, machine learning, and intelligent automation.
+
+                                            Consulting   Business Transformation – Strategy, process optimization, and digital transformation guidance.
+
+                                            SAP   ERP Services – SAP implementation, support, upgrades, and integration.
+
+                                            Application Management Services (AMS) – Long-term application support and monitoring.
+
+                                            Data   Analytics – Data engineering, BI dashboards, analytics platforms, and insights solutions.
+
+                                            CX / Customer Experience Solutions – Omnichannel support, customer service platforms, and experience enhancement tools."
+                                />
+                                <Title
+                                    level="H3"
+                                    text="Basic List"
+                                    class="sapUiTinyMargin"
+                                    wrappingType="Normal"
+                                />
+                                <List>
+                                    <StandardListItem
+                                        title="Application Development"
+                                    />
+                                    <StandardListItem
+                                        title="Cybersecurity Solutions"
+                                    />
+                                    <StandardListItem title="Cloud Services" />
+                                    <StandardListItem title="AI  Automation" />
+                                </List>
+                            </WizardStep>
+                            <WizardStep
+                                id="OptionalInfoStep"
+                                validated="true"
+                                activate="optionalStepActivation"
+                                title="Products and Solutions"
+                            >
+                                <Text
+                                    text="AI-Driven Solutions – Chatbots, virtual assistants, and machine-learning tools for smarter operations.
+
+                                            Automation Platforms – RPA (Robotic Process Automation) solutions to reduce manual work and improve efficiency.
+
+                                            Cybersecurity Platform – Threat monitoring, endpoint security, SOC services, and vulnerability management.
+
+                                            Digital Workplace Tools – Solutions for remote work, device management, and employee experience improvement.
+
+                                            Cloud    Hybrid Solutions – Cloud migration, optimization, and multi-cloud management tools.
+
+                                            Enterprise Applications – ERP, CRM, and customized business applications for different industries.
+
+                                            Data    Analytics Solutions – BI dashboards, real-time analytics, and data modernization tools.
+
+                                            CX (Customer Experience) Solutions – Omnichannel platforms, customer journey tools, and contact center technologies.
+
+                                            Industry-Specific Solutions – Tailored solutions for banking, retail, manufacturing, healthcare, and other sectors.
+
+                                            Innovation    Co-Creation Platforms – Labs and frameworks for co-creating digital products with clients."
+                                />
+                                <List>
+                                    <ObjectListItem
+                                        title="Automation Platforms"
+                                        number="New"
+                                        numberState="Success"
+                                        icon="sap-icon://process"
+                                        type="Active"
+                                        press="onProductPress"
+                                    />
+                                    <ObjectListItem
+                                        title="Cybersecurity Platform"
+                                        number="Trending"
+                                        numberState="Information"
+                                        icon="sap-icon://shield"
+                                    />
+                                </List>
+                            </WizardStep>
+                            <WizardStep
+                                id="PricingStep"
+                                activate="pricingActivate"
+                                complete="pricingComplete"
+                                validated="true"
+                                title="Clients Industries Served"
+                            >
+                                <Carousel
+                                    id="productCarousel"
+                                    width="100%"
+                                    height="310px"
+                                    pageIndicatorPlacement="Bottom"
+                                    showPageIndicator="true"
+                                    loop="true"
+                                >
+                                    <!-- ********** CARD 1 ********** -->
+                                    <VBox
+                                        class="sapUiSmallMargin"
+                                        width="100%"
+                                        alignItems="Center"
+                                    >
+                                        <Panel
+                                            headerText="Financial   Retail Sector"
+                                            width="80%"
+                                            class="sapUiMediumMargin"
+                                            expandable="false"
+                                        >
+                                            <List>
+                                                <StandardListItem
+                                                    title="Banking   Financial Services"
+                                                    info="Digital banking, cybersecurity, automation"
+                                                    infoState="None"
+                                                />
+                                                <StandardListItem
+                                                    title="Insurance"
+                                                    info="Claims processing, service platforms, analytics"
+                                                />
+                                                <StandardListItem
+                                                    title="Retail   E-Commerce"
+                                                    info="Omnichannel tools, POS support, customer experience"
+                                                />
+                                            </List>
+                                        </Panel>
+                                    </VBox>
+
+                                    <!-- ********** CARD 2 ********** -->
+                                    <VBox
+                                        class="sapUiSmallMargin"
+                                        width="100%"
+                                        alignItems="Center"
+                                    >
+                                        <Panel
+                                            headerText="Industrial   Healthcare Sector"
+                                            width="80%"
+                                            class="sapUiMediumMargin"
+                                            expandable="false"
+                                        >
+                                            <List>
+                                                <StandardListItem
+                                                    title="Manufacturing"
+                                                    info="Smart factory, automation, supply chain"
+                                                />
+                                                <StandardListItem
+                                                    title="Healthcare   Life Sciences"
+                                                    info="Patient data, compliance, digital platforms"
+                                                />
+                                                <StandardListItem
+                                                    title="Automotive"
+                                                    info="Connected vehicles, production automation"
+                                                />
+                                            </List>
+                                        </Panel>
+                                    </VBox>
+
+                                    <!-- ********** CARD 3 ********** -->
+                                    <VBox
+                                        class="sapUiSmallMargin"
+                                        width="100%"
+                                        alignItems="Center"
+                                    >
+                                        <Panel
+                                            headerText="Public, Energy   Education"
+                                            width="80%"
+                                            class="sapUiMediumMargin"
+                                            expandable="false"
+                                        >
+                                            <List>
+                                                <StandardListItem
+                                                    title="Telecommunications"
+                                                    info="Network support, infrastructure services"
+                                                />
+                                                <StandardListItem
+                                                    title="Energy   Utilities"
+                                                    info="Grid modernization, analytics, operations"
+                                                />
+                                                <StandardListItem
+                                                    title="Public Sector   Education"
+                                                    info="Digital services, automation, e-learning"
+                                                />
+                                            </List>
+                                        </Panel>
+                                    </VBox>
+                                </Carousel>
+                            </WizardStep>
+                        </Wizard>
+                    </content>
+                    <footer>
+                        <OverflowToolbar>
+                            <ToolbarSpacer />
+                            <Button
+                                text="Cancel"
+                                press="handleWizardCancel"
+                            />
+                        </OverflowToolbar>
+                    </footer>
+                </Page>
+                <Page
+                    id="wizardReviewPage"
+                    showHeader="false"
+                >
+                    <content>
+                        <form:SimpleForm
+                            title="1. About Our Company"
+                            minWidth="1024"
+                            editable="false"
+                            layout="ResponsiveGridLayout"
+                        >
+                            <form:content>
+                                <Label text="Type" />
+                                <Text
+                                    id="ProductTypeChosen"
+                                    text="{/productType}"
+                                />
+                                <Link
+                                    press="editStepOne"
+                                    text="Edit"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+
+                        <form:SimpleForm
+                            title="2. Company Services"
+                            minWidth="1024"
+                            editable="false"
+                            layout="ResponsiveGridLayout"
+                        >
+                            <form:content>
+                                <Label text="Name" />
+                                <Text
+                                    id="ProductNameChosen"
+                                    text="{/productName}"
+                                />
+                                <Label text="Weight" />
+                                <Text
+                                    id="ProductWeightChosen"
+                                    text="{/productWeight}"
+                                />
+                                <Label text="Manufacturer" />
+                                <Text
+                                    id="ProductManufacturerChosen"
+                                    text="{/productManufacturer}"
+                                />
+                                <Label text="Description" />
+                                <Text
+                                    id="ProductDescriptionChosen"
+                                    text="{/productDescription}"
+                                />
+                                <Link
+                                    press="editStepTwo"
+                                    text="Edit"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+
+                        <form:SimpleForm
+                            title="3. Products and Solutions"
+                            minWidth="1024"
+                            editable="false"
+                            layout="ResponsiveGridLayout"
+                        >
+                            <form:content>
+                                <Label text="Some text" />
+                                <Text
+                                    text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. "
+                                />
+                                <Label text="Manufacturing Date" />
+                                <Text
+                                    id="ManufacturingDate"
+                                    text="{/manufacturingDate}"
+                                />
+                                <Label text="Availability" />
+                                <Text
+                                    id="AvailabilityChosen"
+                                    text="{/availabilityType}"
+                                />
+                                <Label text="Size" />
+                                <HBox>
+                                    <Text
+                                        id="Size"
+                                        text="{/size}"
+                                    />
+                                    <Text
+                                        id="Size2"
+                                        class="sapUiTinyMarginBegin"
+                                        text="{/measurement}"
+                                    />
+                                </HBox>
+                                <Link
+                                    press="editStepThree"
+                                    text="Edit"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+
+                        <form:SimpleForm
+                            title="4. Clients Industries Served"
+                            minWidth="1024"
+                            editable="false"
+                            layout="ResponsiveGridLayout"
+                        >
+                            <form:content>
+                                <Label text="Price" />
+                                <Text
+                                    id="ProductPriceChosen"
+                                    text="{/productPrice}"
+                                />
+                                <Label text="Discount Group" />
+                                <Text
+                                    id="DiscountGroupChosen"
+                                    text="{/discountGroup}"
+                                />
+                                <Label text="VAT Included" />
+                                <Text
+                                    id="ProductVATChosen"
+                                    text="{/productVAT}"
+                                />
+                                <Link
+                                    press="editStepFour"
+                                    text="Edit"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </content>
+                    <footer>
+                        <Bar>
+                            <contentRight>
+                                <Button
+                                    text="Submit"
+                                    press="handleWizardSubmit"
+                                />
+                                <Button
+                                    text="Cancel"
+                                    press="handleWizardCancel"
+                                />
+                            </contentRight>
+                        </Bar>
+                    </footer>
+                </Page>
+            </pages>
+        </NavContainer>
+    </Page>
+</mvc:View>

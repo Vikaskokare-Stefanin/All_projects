@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {
+            "path": "TaskList"
+        },
+        {
+            "name": "TaskList1",
+            "path": "TaskList1"
+        }
+    ],
+    "settings": {
+        "SAP HANA Database Explorer.ShowXsAdvancedConnections": true
+    }
+}

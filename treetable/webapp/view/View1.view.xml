@@ -1,0 +1,95 @@
+<mvc:View
+    controllerName="treetable.com.treetable.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.ui.table"
+    xmlns:m="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core"
+    xmlns:rowmodes="sap.ui.table.rowmodes"
+    height="100%"
+>
+    <m:Page
+        id="page"
+        title="{i18n>title}"
+        enableScrolling="true"
+        showHeader="true"
+    >
+        <m:content>
+            <TreeTable
+                id="TreeTableBasic"
+                rows="{path:'/catalog/women', parameters: { countMode: 'Inline', arrayNames:['categories']}}"
+                selectionMode="Single"
+                enableSelectAll="false"
+                ariaLabelledBy="title"
+                width="100%"
+            >
+                <rowMode>
+                    <rowmodes:Auto minRowCount="3" />
+                </rowMode>
+
+                <extension>
+                    <m:OverflowToolbar style="Clear">
+                        <m:Title
+                            id="title"
+                            text="Clothing"
+                        />
+                        <m:ToolbarSpacer />
+                        <m:Button
+                            text="Add"
+                            press="AddCollapseAll"
+                            icon="sap-icon://add"
+                        />
+                        <m:Button
+                            text="Delete"
+                            press="DeleteCollapseSelection"
+                            icon="sap-icon://delete"
+                        />
+                        <m:Button
+                            text="Update"
+                            press="UpdateCollapseChild"
+                            icon="sap-icon://newspaper"
+                        />
+                        <m:SearchField
+                            id="searchField"
+                            width="30%"
+                            liveChange="onSearch"
+                        />
+                    </m:OverflowToolbar>
+                </extension>
+                <columns>
+                    <Column label="Categories">
+                        <template>
+                            <m:Text
+                                text="{name}"
+                                wrapping="false"
+                            />
+                        </template>
+                    </Column>
+
+                    <Column
+                        width="9rem"
+                        label="Price"
+                    >
+                        <template>
+                            <u:Currency
+                                value="{amount}"
+                                currency="{currency}"
+                            />
+                        </template>
+                    </Column>
+                    <Column
+                        width="11rem"
+                        label="Size"
+                    >
+                        <template>
+                            <m:Text
+                                text="{size}"
+                                wrapping="false"
+                            />
+                        </template>
+                    </Column>
+                </columns>
+            </TreeTable>
+        </m:content>
+    </m:Page>
+</mvc:View>

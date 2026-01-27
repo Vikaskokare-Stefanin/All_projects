@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    controllerName="googleformwizard.com.googleformwizard.controller.NewPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <Table id="simpleTable" inset="false" items="{/items}">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Simple Table" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="Column 1" />
+                    </Column>
+                    <Column>
+                        <Text text="Column 2" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{column1}" />
+                            <Text text="{column2}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

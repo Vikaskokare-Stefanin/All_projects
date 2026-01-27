@@ -1,0 +1,31 @@
+{
+  "tenant-mode": "dedicated",
+  "xsappname": "Security",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.MANAGER",
+      "description": "Manager Scope"
+    },
+    {
+      "name": "$XSAPPNAME.EMPLOYEE",
+      "description": "employee scope"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Manager_Role",
+      "description": "manager role",
+      "scope-references": [
+        "$XSAPPNAME.MANAGER"
+      ]
+    },
+    {
+      "name": "Employee_Role",
+      "description": "employee role",
+      "scope-references": [
+        "$XSAPPNAME.EMPLOYEE"
+      ]
+    }
+  ],
+  "attributes": []
+}

@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {
+            "path": "Security"
+        },
+        {
+            "name": "capFiori",
+            "path": "capFiori"
+        }
+    ],
+    "settings": {
+        "SAP HANA Database Explorer.ShowXsAdvancedConnections": true
+    }
+}

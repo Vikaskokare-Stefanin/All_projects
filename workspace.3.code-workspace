@@ -1,0 +1,10 @@
+{
+    "folders": [
+        {
+            "path": "EX-2"
+        }
+    ],
+    "settings": {
+        "SAP HANA Database Explorer.ShowXsAdvancedConnections": true
+    }
+}

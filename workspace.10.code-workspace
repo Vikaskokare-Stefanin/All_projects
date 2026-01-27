@@ -1,0 +1,15 @@
+{
+    "folders": [
+        {
+            "name": "CAPMTA",
+            "path": "CAPMTA"
+        },
+        {
+            "name": "NewMTA",
+            "path": "NewMTA"
+        }
+    ],
+    "settings": {
+        "SAP HANA Database Explorer.ShowXsAdvancedConnections": true
+    }
+}

@@ -1,0 +1,160 @@
+<mvc:View
+    controllerName="fullui.com.fullui.controller.Course"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+>
+    <Page
+        id="Course"
+        title="Course Details"
+        showNavButton="true"
+        navButtonPress="BackFromCourseMain"
+    >
+        <content>
+            <fb:FilterBar
+                id="Coursefilter"
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+            >
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem
+                        name="Name"
+                        label="Name"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="Name"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: '/ProductNames',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="Age"
+                        label="Age"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="Age"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: '/ProductCategories',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="State"
+                        label="State"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="State"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: '/ProductSuppliers',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </content>
+
+        <Table items="{
+			path: 'CoursesModelBinded>/',
+			sorter: {
+				path: 'Name'
+			}
+		}">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title
+                        text="Course Details"
+                        level="H2"
+                    />
+                    <ToolbarSpacer />
+                    <Button
+                        text="Create Course"
+                        press="CreateCourse"
+                    />
+                    <Button
+                        text=""
+                        press="onOpenPressed"
+                    />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="Course ID" />
+                </Column>
+                <Column>
+                    <Text text="Course Name" />
+                </Column>
+                <Column>
+                    <Text text="Course Code" />
+                </Column>
+                <Column>
+                    <Text text="Course Teacher" />
+                </Column>
+                <Column>
+                    <Text text="Status" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem
+                    vAlign="Middle"
+                    type="Navigation"
+                > 
+                    <cells>
+                        <Text
+                            text="{CoursesModelBinded>ID}"
+                            wrapping="false"
+                        />
+                        <Text
+                            text="{CoursesModelBinded>title}"
+                            wrapping="false"
+                        />
+                        <Text text="{CoursesModelBinded>code}" />
+                        <Text text="{CoursesModelBinded>teacher_name}" />
+                        <Text text="{CoursesModelBinded>Status}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

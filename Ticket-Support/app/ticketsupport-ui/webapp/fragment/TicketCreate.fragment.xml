@@ -1,0 +1,156 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:rte="sap.ui.richtexteditor"
+    xmlns:l="sap.ui.layout"
+>
+    <Dialog
+        id="createTicketDialog"
+        title="Create Ticket"
+        contentWidth="600px"
+        contentHeight="auto"
+        resizable="true"
+        draggable="true"
+        class="sapUiContentPadding"
+        ariaLabelledBy="createTicketDialogTitle"
+        initialFocus="ticketSubjectInput"
+    >
+        <content>
+            <form:SimpleForm
+                id="ticketForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <form:content>
+                    <Label
+                        text="Subject"
+                        required="true"
+                        labelFor="ticketSubjectInput"
+                    />
+                    <Input
+                        id="ticketSubjectInput"
+                        value="{newModel>/subject}"
+                        placeholder="Ticket Subject"
+                        maxLength="100"
+                        liveChange=".onValidateTicket"
+                        valueState="{ctx>/validation/titleState}"
+                        valueStateText="{ctx>/validation/titleStateText}"
+                    />
+
+                    <Label
+                        text="Ticket Priority"
+                        required="true"
+                        labelFor="ticketPrioritySelect"
+                    />
+                    <ComboBox
+                        id="ticketPrioritySelect"
+                        selectedKey="{newModel>/priority}"
+                        forceSelection="true"
+                        change=".onValidateTicket"
+                    >
+                        <core:Item
+                            key="High"
+                            text="High"
+                        />
+                        <core:Item
+                            key="Medium"
+                            text="Medium"
+                        />
+                        <core:Item
+                            key="Low"
+                            text="Low"
+                        />
+                    </ComboBox>
+
+                    <Label
+                        text="Ticket Category"
+                        required="true"
+                        labelFor="ticketCategorySelect"
+                    />
+                    <ComboBox
+                        id="ticketCategorySelect"
+                        selectedKey="{newModel>/category}"
+                        forceSelection="true"
+                        items=""
+                    >
+                        <core:Item
+                            key="Network"
+                            text="Network"
+                        />
+                        <core:Item
+                            key="Hardware"
+                            text="Hardware"
+                        />
+                        <core:Item
+                            key="Software"
+                            text="Software"
+                        />
+                        <core:Item
+                            key="Application Support"
+                            text="Application Support"
+                        />
+                        <core:Item
+                            key="Access Management"
+                            text="Access Management"
+                        />
+                        <core:Item
+                            key="Security"
+                            text="Security"
+                        />
+                    </ComboBox>
+
+                    <Label
+                        text="Ticket Description"
+                        labelFor="ticketDescriptionEditor"
+                    />
+                    <rte:RichTextEditor
+                        id="ticketDescriptionEditor"
+                        width="100%"
+                        height="300px"
+                        customToolbar="true"
+                        showGroupFont="true"
+                        showGroupLink="true"
+                        showGroupInsert="false"
+                        showGroupClipboard="true"
+                        showGroupStructure="true"
+                        showGroupUndo="true"
+                        value="{newModel>/description}"
+                        editable="true"
+                        editorType="TinyMCE6"
+                        sanitizeValue="true"
+                    />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+
+        <buttons>
+            <Button
+                id="btnSubmit"
+                text="Submit"
+                press=".onSubmitTicket"
+                type="Emphasized"
+                enabled="{ctx>/validation/isValid}"
+            />
+            <Button
+                id="btnCancel"
+                text="Cancel"
+                press="onCloseCreateTicket"
+                type="Reject"
+            />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

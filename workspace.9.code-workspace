@@ -1,0 +1,10 @@
+{
+    "folders": [
+        {
+            "path": "TestOne"
+        }
+    ],
+    "settings": {
+        "SAP HANA Database Explorer.ShowXsAdvancedConnections": true
+    }
+}

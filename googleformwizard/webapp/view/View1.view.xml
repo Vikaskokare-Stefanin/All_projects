@@ -1,0 +1,10 @@
+<mvc:View
+    controllerName="googleformwizard.com.googleformwizard.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="View 1">
+        <content>
+            <Button text="Go to New Page" press="onNavToNewPage" />
+        </content>
+    </Page>
+</mvc:View>

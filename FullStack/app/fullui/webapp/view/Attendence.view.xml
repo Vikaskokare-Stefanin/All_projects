@@ -1,0 +1,80 @@
+<mvc:View
+    controllerName="fullui.com.fullui.controller.Attendence"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+    <Page title="Attendance Management">
+        <!-- Header -->
+        <VBox class="sapUiSmallMargin">
+            <HBox justifyContent="SpaceBetween">
+                <VBox>
+                    <Label text="Select Class" />
+                    <ComboBox
+                        id="studentCombo"
+                        items="{studentsModel>/}"
+                        placeholder="Select Class"
+                        change="FilterDataBAsedOnCalss"
+                    >
+                        <core:Item
+                            key="{studentsModel>name}"
+                            text="{= ${studentsModel>name} + ' ' + ${studentsModel>section} }"
+                        />
+                    </ComboBox>
+                </VBox>
+
+                <DatePicker
+                    id="attendanceDate"
+                    valueFormat="yyyy-MM-dd"
+                    displayFormat="dd/MM/yyyy"
+                />
+            </HBox>
+        </VBox>
+
+        <!-- Student Table -->
+        <Table
+            id="attendanceTable"
+            items="{TablestudentsModel>/}"
+        >
+            <columns>
+                <Column>
+                    <Text text="Roll No" />
+                </Column>
+                <Column>
+                    <Text text="Student Name" />
+                </Column>
+                <Column hAlign="Center">
+                    <Text text="Present" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{TablestudentsModel>RollNo}" />
+                        <Text text="{TablestudentsModel>Name}" />
+                        <Switch
+                               state="{= ${TablestudentsModel>attendance} === 'P' }"
+                            customTextOn="P"
+                            customTextOff="A"
+                            change="onAttendanceChange"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <!-- Footer -->
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="Save Attendance"
+                    type="Emphasized"
+                    press="onSaveAttendance"
+                />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

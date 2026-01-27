@@ -1,0 +1,275 @@
+<mvc:View
+    controllerName="com.ticketsupport.ticketsupportui.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:p="sap.m.plugins"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="Ticket Support Application"
+    >
+        <SplitContainer
+            id="SplitContDemo"
+            initialDetail="detail"
+            initialMaster="master"
+        >
+            <detailPages>
+                <Page
+                    id="detail"
+                    title="Detail Page"
+                    backgroundDesign="Solid"
+                    showNavButton="{= !${device>/system/desktop} }"
+                    navButtonPress=".onPressDetailBack"
+                >
+                    <Table
+                        id="idProductsTable"
+                        inset="false"
+                        items="{
+			path: '/Tickets',
+            sorter: {
+            path: 'createdAt',
+            descending: true
+        }
+		}"
+                    >
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    <Title
+                                        text="Tikckets"
+                                        level="H2"
+                                    />
+                                    <ToolbarSpacer />
+                                    <Label text="Ticket Priority " />
+                                    <ComboBox
+                                        id="idPopinLayoutHeader"
+                                        placeholder="Popin layout options"
+                                        change="onPopinLayoutChanged"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                text="High"
+                                                key="High"
+                                            />
+                                            <core:Item
+                                                text="Medium"
+                                                key="Medium"
+                                            />
+                                            <core:Item
+                                                text="Low"
+                                                key="Low"
+                                            />
+                                        </items>
+                                    </ComboBox>
+                                    <!-- <Label text="Sticky options:" /> -->
+                                    <!-- <CheckBox
+                                        text="ColumnHeaders"
+                                        select="onSelect"
+                                    /> -->
+                                    <!-- <CheckBox
+                                        text="HeaderToolbar"
+                                        select="onSelect"
+                                    />
+                                    <CheckBox
+                                        text="InfoToolbar"
+                                        select="onSelect"
+                                    /> -->
+                                    <!-- <ToggleButton
+                                        id="toggleInfoToolbar"
+                                        text="Hide/Show InfoToolbar"
+                                        press="onToggleInfoToolbar"
+                                    /> -->
+                                    <Button
+                                        press="onOpenCreateTicket"
+                                        text="Create Ticket"
+                                    />
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <infoToolbar>
+                            <!-- <OverflowToolbar>
+                                <Label
+                                    text="Wide range of available products"
+                                />
+                            </OverflowToolbar> -->
+                        </infoToolbar>
+                        <columns>
+                            <Column width="12em">
+                                <Text text="Ticket ID" />
+                                <dependents>
+                                    <p:ColumnAIAction press="onAIActionPress" />
+                                </dependents>
+                            </Column>
+                            <Column
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                            >
+                                <Text text="Title" />
+                            </Column>
+                            <Column
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                            >
+                                <Text text="Category" />
+                            </Column>
+                            <Column
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                            >
+                                <Text text="User Name" />
+                            </Column>
+                            <Column>
+                                <Text text="Status" />
+                            </Column>
+                            <Column>
+                                <Text text="Ticket Priority" />
+                            </Column>
+                            <Column>
+                                <Text text="Action" />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text text="TCKT-{ticketNumber}" />
+                                    <!-- <ObjectIdentifier title="{subCategory}" /> -->
+                                    <ObjectIdentifier
+                                        title="{subCategory}"
+                                        text="{path:'createdAt', formatter: '.formatter.formatDateTime'}"
+                                    />
+                                    <Text text="{category}" />
+                                    <Text text="{assignedGroup}" />
+
+                                    <ObjectStatus
+                                        text="{path:'status', formatter: '.formatter.statusText'}"
+                                        state="{path:'status', formatter: '.formatter.statusState'}"
+                                    />
+                                    <!-- <Text text="{priority}" /> -->
+                                    <ObjectStatus
+                                        text="{priority}"
+                                        state="{path:'priority', formatter: '.formatter.priorityState'}"
+                                        inverted="true"
+                                    />
+                                    <HBox
+                                        justifyContent="Center"
+                                        alignItems="Center"
+                                        width="100%"
+                                    >
+                                        <Button
+                                            text="Close"
+                                            type="Accept"
+                                            press="onCloseTicket"
+                                            class="sapUiTinyMarginEnd"
+                                        />
+                                        <Button
+                                            text="Delete"
+                                            type="Reject"
+                                            press="onDeleteRow"
+                                        />
+                                    </HBox>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Page>
+                <Page
+                    id="detailDetail"
+                    title="Detail Detail"
+                    backgroundDesign="Solid"
+                    showNavButton="true"
+                    navButtonPress=".onPressDetailBack"
+                >
+                    <VBox class="sapUiSmallMargin">
+                        <Label text="This is Detail Page 2" />
+                        <Text
+                            text="Here you could change the Split Application mode. After the mode change, resize the browser window to see the difference in the master form behaviour."
+                        />
+                        <RadioButtonGroup
+                            columns="1"
+                            width="500px"
+                            class="sapUiMediumMarginBottom"
+                            select=".onPressModeBtn"
+                        >
+                            <buttons>
+                                <RadioButton
+                                    id="RB1-1"
+                                    text="show/hide"
+                                    selected="true"
+                                />
+                                <RadioButton
+                                    id="RB1-2"
+                                    text="stretch/compress"
+                                />
+                                <RadioButton
+                                    id="RB1-3"
+                                    text="hide"
+                                />
+                                <RadioButton
+                                    id="RB1-4"
+                                    text="popover"
+                                />
+                            </buttons>
+                        </RadioButtonGroup>
+                    </VBox>
+                </Page>
+                <Page
+                    id="detail2"
+                    title="Detail 3 Page"
+                    backgroundDesign="Solid"
+                    showNavButton="true"
+                    navButtonPress=".onPressDetailBack"
+                >
+                    <Label text="This is Detail Page 3" />
+                    <Input />
+                    <Label text="Label 2" />
+                    <Input />
+                    <Label text="Label 3" />
+                    <Input />
+                    <Label text="Label 4" />
+                    <Input />
+                    <Label text="Label 5" />
+                    <Input />
+                </Page>
+            </detailPages>
+            <masterPages>
+                <Page
+                    id="master"
+                    title="Customer Support"
+                    backgroundDesign="List"
+                >
+                    <List>
+                        <StandardListItem
+                            title="Ticket List"
+                            type="Navigation"
+                            press=".onPressGoToMaster"
+                        />
+                    </List>
+                </Page>
+                <Page
+                    id="master2"
+                    title="Master 2"
+                    backgroundDesign="List"
+                    showNavButton="true"
+                    navButtonPress=".onPressMasterBack"
+                >
+                    <List itemPress=".onListItemPress">
+                        <StandardListItem
+                            title="All Details"
+                            type="Active"
+                        />
+                        <StandardListItem
+                            title="To Detail 2"
+                            type="Active"
+                        />
+                        <StandardListItem
+                            title="To Detail 3"
+                            type="Active"
+                        />
+                    </List>
+                </Page>
+            </masterPages>
+        </SplitContainer>
+    </Page>
+</mvc:View>

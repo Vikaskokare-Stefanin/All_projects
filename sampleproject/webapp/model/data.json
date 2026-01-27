@@ -1,0 +1,64 @@
+{
+    "Products": [
+        {
+            "ProductID": 1,
+            "ProductName": "Wings",
+            "SupplierID": 1,
+            "CategoryID": 1,
+            "QuantityPerUnit": "10 boxes x 20 bags",
+            "UnitPrice": 18,
+            "UnitsInStock": 39,
+            "UnitsOnOrder": 0,
+            "ReorderLevel": 10,
+            "editable": false
+        },
+        {
+            "ProductID": 2,
+            "ProductName": "Vertical Stabilizer",
+            "SupplierID": 1,
+            "CategoryID": 1,
+            "QuantityPerUnit": "24 - 12 oz Stabilizer",
+            "UnitPrice": 19,
+            "UnitsInStock": 17,
+            "UnitsOnOrder": 40,
+            "ReorderLevel": 25,
+            "editable": false
+        },
+        {
+            "ProductID": 3,
+            "ProductName": "Horizontal Stabilizer",
+            "SupplierID": 1,
+            "CategoryID": 2,
+            "QuantityPerUnit": "12 - 550 Stabilizer",
+            "UnitPrice": 10,
+            "UnitsInStock": 13,
+            "UnitsOnOrder": 70,
+            "ReorderLevel": 25,
+            "editable": false
+        },
+        {
+            "ProductID": 4,
+            "ProductName": "Chef Anton's Cajun Seasoning",
+            "SupplierID": 2,
+            "CategoryID": 2,
+            "QuantityPerUnit": "48 - 6 oz jars",
+            "UnitPrice": 22,
+            "UnitsInStock": 53,
+            "UnitsOnOrder": 0,
+            "ReorderLevel": 0,
+            "editable": false
+        },
+        {
+            "ProductID": 5,
+            "ProductName": "Chef Anton's Gumbo Mix",
+            "SupplierID": 2,
+            "CategoryID": 2,
+            "QuantityPerUnit": "36 boxes",
+            "UnitPrice": 21.35,
+            "UnitsInStock": 0,
+            "UnitsOnOrder": 0,
+            "ReorderLevel": 0,
+            "editable": true
+        }
+    ]
+}

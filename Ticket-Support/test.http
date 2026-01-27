@@ -1,0 +1,26 @@
+POST http://localhost:4004/support/Tickets
+Content-Type: application/json
+
+{
+  "ticketNumber": 1,
+  "subject": "WIFI Issue",
+  "description": "Office WiFi is not working since morning",
+  "status": "N",
+  "priority": "Medium",
+  "category": "Network",
+  "subCategory": "WiFi Connectivity",
+  "assignedGroup": "IT Support",
+  "slaDueDate": "2026-01-26T18:00:00Z"
+}
+
+###  
+GET http://localhost:4004/support/Tickets
+# Content-Type: application/json  
+
+###
+PUT http://localhost:4004/support/Tickets('c51ced8a-5b1d-4692-8159-7e18b89ef0f7')
+Content-Type: application/json
+
+{
+  "status":"R"
+}

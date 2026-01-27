@@ -1,0 +1,185 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "fullui.com.fullui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.19.6",
+      "toolsId": "2f35590a-d7ce-4caa-ab86-352c01ae5b63"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v2/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.143.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "fullui.com.fullui.i18n.i18n"
+        }
+      },
+      "": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "useBatch": false
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "fullui.com.fullui.view",
+        "async": true,
+        "viewPath": "fullui.com.fullui.view"
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "name": "StudentInfo",
+          "pattern": "StudentInfo",
+          "target": [
+            "StudentInfo"
+          ]
+        },
+        {
+          "name": "StudentDetail",
+          "pattern": "StudentDetail",
+          "target": [
+            "StudentDetail"
+          ]
+        },
+        {
+          "name": "TeacherMain",
+          "pattern": "TeacherMain",
+          "target": [
+            "TeacherMain"
+          ]
+        },
+        {
+          "name": "TeacherWorkLoad",
+          "pattern": "TeacherWorkLoad",
+          "target": [
+            "TeacherWorkLoad"
+          ]
+        },
+        {
+          "name": "Course",
+          "pattern": "Course",
+          "target": [
+            "Course"
+          ]
+        },
+        {
+          "name": "Attendence",
+          "pattern": "Attendence",
+          "target": [
+            "Attendence"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "id": "View1",
+          "name": "View1"
+        },
+        "StudentInfo": {
+          "id": "StudentInfo",
+          "name": "StudentInfo"
+        },
+        "StudentDetail": {
+          "id": "StudentDetail",
+          "name": "StudentDetail"
+        },
+        "TeacherMain": {
+          "id": "TeacherMain",
+          "name": "TeacherMain"
+        },
+        "TeacherWorkLoad": {
+          "id": "TeacherWorkLoad",
+          "name": "TeacherWorkLoad"
+        },
+        "Course": {
+          "id": "Course",
+          "name": "Course"
+        },
+        "Attendence": {
+          "id": "Attendence",
+          "name": "Attendence"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "fullui.com.fullui.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

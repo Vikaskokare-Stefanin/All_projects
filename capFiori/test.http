@@ -1,0 +1,20 @@
+POST http://localhost:4004/odata/v4/catalog/Books
+     Content-Type: application/json
+
+     {
+      "ID"    : 4,
+      "title" : "Test3",
+      "stock" : 40,
+      "price" : 300
+     }
+
+######
+POST http://localhost:4004/odata/v4/catalog/Student
+Content-Type: application/json
+
+     {
+      "ID"    : 1,
+      "Name" : "Vikas",
+      "Age" : 23,
+      "State" : "MH"
+     }

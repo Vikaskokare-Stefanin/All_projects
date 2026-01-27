@@ -1,0 +1,166 @@
+<mvc:View
+    controllerName="fullui.com.fullui.controller.StudentInfo"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    height="100%"
+>
+    <Page
+        id="page11"
+        title="{i18n>projectName}"
+        showNavButton="true"
+        navButtonPress="onNavButtonPress"
+    >
+        <content>
+            <fb:FilterBar
+                id="filterbar"
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+            >
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem
+                        name="Name"
+                        label="Name"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="Name"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: 'TableModel>/',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="Age"
+                        label="Age"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="Age"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: 'TableModel>/',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="State"
+                        label="State"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="State"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: 'TableModel>/',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </content>
+
+        <Table
+            id="idProductsTable"
+            inset="false"
+            mode="SingleSelectLeft"
+            items="{TableModel>/}"
+        >
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="Student Information" />
+                    <ToolbarSpacer />
+
+                    <Button
+                        press="CreateNewStudent"
+                        text="Create New Student"
+                        visible="{roleModel>/isAdmin}"
+                    />
+                    <Button
+                        press="DeleteStudent"
+                        text="Delete Student"
+                        visible="{roleModel>/isAdmin}"
+                    />
+                    <Button
+                        press="UpdateStudent"
+                        text="Update Student"
+                        visible="{roleModel>/isAdmin}"
+                    />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="Name" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Age" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Mobile No." />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Gender" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem
+                    vAlign="Middle"
+                    type="Navigation"
+                    press="onStudentSelect"
+                >
+                    <cells>
+                        <ObjectIdentifier title="{TableModel>Name}" />
+                        <Text text="{TableModel>Age}" />
+                        <Text text="{TableModel>phone}" />
+                        <Text text="{TableModel>gender}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

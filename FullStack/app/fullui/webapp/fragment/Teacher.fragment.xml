@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog title="Assign Course To Teacher">
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm
+                editable="false"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <Label text="Select Course" />
+                    <ComboBox
+                        id="teacherCombo"
+                        items="{
+                            path: 'CoursesModelconnect>/'
+                        }"
+                    >
+                        <core:Item
+                            key="{CoursesModelconnect>ID}"
+                            text="{CoursesModelconnect>title}"
+                        />
+                    </ComboBox>
+                    <!-- <Label text="Age" />
+                    <Input value="{NewformModel>/Age}" /> -->
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <Bar>
+            <contentRight>
+                <Button
+                    press="SubmitDataAssign"
+                    text="Assign"
+                />
+                <!-- <Button
+                    press="SubmitTheData"
+                    text="Submit"
+                /> -->
+                <Button
+                    press="CloseFragment"
+                    text="Cancel"
+                />
+            </contentRight>
+        </Bar>
+    </Dialog>
+</core:FragmentDefinition>

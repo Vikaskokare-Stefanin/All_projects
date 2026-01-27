@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Dialog
+        id="productDetailDialog"
+        title="Product Details"
+        class="sapUiResponsivePadding"
+        endButton="closeButton"
+    >
+        <content>
+            <f:SimpleForm
+                editable="false"
+                layout="ResponsiveGridLayout"
+            >
+                <Label text="Product ID" />
+                <ComboBox
+                    id="teacherCombo"
+                    items="{
+                        path: '/Teachers'
+                    }"
+                    selectedKey="{newTeacherModel>/teacherID}"
+                >
+                    <core:Item
+                        key="{ID}"
+                        text="{name}"
+                    />
+                </ComboBox>
+                <Label text="Product Name" />
+                <Input value="{formBindModel>/ProductName}" />
+            </f:SimpleForm>
+        </content>
+
+        <HBox>
+            <Button
+                id="SaveT"
+                text="Save"
+                press=".onSaveFragment"
+            />
+            <Button
+                id="closeButtonT"
+                text="Close"
+                press=".onCloseFragment"
+            />
+
+            <Button
+                id="SubmitT"
+                text="Submit"
+                press=".SubmitFragment"
+            />
+        </HBox>
+    </Dialog>
+</core:FragmentDefinition>

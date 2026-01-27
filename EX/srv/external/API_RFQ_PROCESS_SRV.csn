@@ -1,0 +1,532 @@
+{
+ "meta": {
+  "creator": "cds-dk 9.4.3"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "API_RFQ_PROCESS_SRV": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true",
+   "@sap.message.scope.supported": "true",
+   "@sap.supported.formats": "atom json xlsx"
+  },
+  "API_RFQ_PROCESS_SRV.A_RequestForQuotation": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.content.version": "1",
+   "@sap.label": "Request for Quotation",
+   "elements": {
+    "RequestForQuotation": {
+     "key": true,
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "RFQ",
+     "@sap.quickinfo": "Request for Quotation",
+     "notNull": true
+    },
+    "CompanyCode": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Company Code"
+    },
+    "PurchasingDocumentCategory": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purch. Doc. Category",
+     "@sap.quickinfo": "Purchasing Document Category"
+    },
+    "PurchasingDocumentType": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "RFQ Type",
+     "@sap.quickinfo": "RFQ Document Type"
+    },
+    "CreatedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Created By",
+     "@sap.quickinfo": "User of person who created a purchasing document"
+    },
+    "CreationDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Created On",
+     "@sap.quickinfo": "Creation Date of Purchasing Document"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@odata.Precision": 7,
+     "@sap.label": "Last Changed",
+     "@sap.quickinfo": "Change Time Stamp"
+    },
+    "Language": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "Language Key"
+    },
+    "PurchasingOrganization": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purchasing Organization"
+    },
+    "PurchasingGroup": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purchasing Group"
+    },
+    "DocumentCurrency": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Currency",
+     "@sap.quickinfo": "Currency Key",
+     "@sap.semantics": "currency-code"
+    },
+    "IncotermsClassification": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Incoterms",
+     "@sap.quickinfo": "Incoterms (Part 1)"
+    },
+    "IncotermsTransferLocation": {
+     "type": "cds.String",
+     "length": 28,
+     "@sap.label": "Incoterms (Part 2)"
+    },
+    "IncotermsVersion": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Incoterms Version"
+    },
+    "IncotermsLocation1": {
+     "type": "cds.String",
+     "length": 70,
+     "@sap.label": "Incoterms Location 1"
+    },
+    "IncotermsLocation2": {
+     "type": "cds.String",
+     "length": 70,
+     "@sap.label": "Incoterms Location 2"
+    },
+    "PaymentTerms": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Payment Terms",
+     "@sap.quickinfo": "Terms of Payment Key"
+    },
+    "CashDiscount1Days": {
+     "type": "cds.Decimal",
+     "precision": 3,
+     "scale": 0,
+     "@sap.label": "Days 1",
+     "@sap.quickinfo": "Cash Discount Days 1"
+    },
+    "CashDiscount2Days": {
+     "type": "cds.Decimal",
+     "precision": 3,
+     "scale": 0,
+     "@sap.label": "Days 2",
+     "@sap.quickinfo": "Cash Discount Days 2"
+    },
+    "CashDiscount1Percent": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 3,
+     "@sap.label": "Disc. Percent 1",
+     "@sap.quickinfo": "Cash discount percentage 1"
+    },
+    "CashDiscount2Percent": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 3,
+     "@sap.label": "Disc. Percent 2",
+     "@sap.quickinfo": "Cash discount percentage 2"
+    },
+    "NetPaymentDays": {
+     "type": "cds.Decimal",
+     "precision": 3,
+     "scale": 0,
+     "@sap.label": "Days Net",
+     "@sap.quickinfo": "Net Payment Terms Period"
+    },
+    "RFQPublishingDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Publishing Date",
+     "@sap.quickinfo": "RFQ Publishing Date"
+    },
+    "QuotationLatestSubmissionDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Quotation Deadline",
+     "@sap.quickinfo": "Deadline for Submission of Bid/Quotation"
+    },
+    "BindingPeriodValidityEndDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Binding Period",
+     "@sap.quickinfo": "Binding Period for Quotation"
+    },
+    "TargetAmount": {
+     "type": "cds.Decimal",
+     "precision": 15,
+     "scale": 3,
+     "@sap.unit": "DocumentCurrency",
+     "@sap.variable.scale": "true",
+     "@sap.label": "Target Value",
+     "@sap.quickinfo": "Target Value for Header Area per Distribution"
+    },
+    "CorrespncInternalReference": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.label": "Our Reference"
+    },
+    "RFQLifecycleStatus": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Status",
+     "@sap.quickinfo": "RFQ Lifecycle Status"
+    },
+    "RequestForQuotationName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "RFQ Description",
+     "@sap.quickinfo": "Short description or the title of the RFQ"
+    },
+    "QuotationEarliestSubmsnDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Quotation Start Date",
+     "@sap.quickinfo": "The date as of which Quotations can be submitted"
+    },
+    "LatestRegistrationDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Apply By",
+     "@sap.quickinfo": "Closing Date for Applications"
+    },
+    "FollowOnDocumentCategory": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Follow-On Document Category",
+     "@sap.quickinfo": "Follow-On Purchasing Document Category"
+    },
+    "FollowOnDocumentType": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Follow-On Document Type",
+     "@sap.quickinfo": "Follow-On Purchasing Document Type"
+    },
+    "IsEndOfPurposeBlocked": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Busin. Purp. Cmpltd.",
+     "@sap.quickinfo": "Business Purpose Completed"
+    },
+    "to_RequestForQuotationBidder": {
+     "type": "cds.Composition",
+     "target": "API_RFQ_PROCESS_SRV.A_RequestForQuotationBidder",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": []
+    },
+    "to_RequestForQuotationItem": {
+     "type": "cds.Composition",
+     "target": "API_RFQ_PROCESS_SRV.A_RequestForQuotationItem",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": []
+    }
+   }
+  },
+  "API_RFQ_PROCESS_SRV.A_RequestForQuotationBidder": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.content.version": "1",
+   "@sap.label": "Bidder",
+   "elements": {
+    "RequestForQuotation": {
+     "key": true,
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purchasing Document",
+     "@sap.quickinfo": "Purchasing Document Number",
+     "notNull": true
+    },
+    "PartnerCounter": {
+     "key": true,
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Partner counter",
+     "notNull": true
+    },
+    "PartnerFunction": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Partner Function"
+    },
+    "Supplier": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Supplier",
+     "@sap.quickinfo": "Account Number of Supplier"
+    }
+   }
+  },
+  "API_RFQ_PROCESS_SRV.A_RequestForQuotationItem": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.content.version": "1",
+   "@sap.label": "Item",
+   "elements": {
+    "RequestForQuotationItem": {
+     "key": true,
+     "type": "cds.String",
+     "length": 5,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "RFQ Item",
+     "@sap.quickinfo": "Item Number of Request For Quotation",
+     "notNull": true
+    },
+    "RequestForQuotation": {
+     "key": true,
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purchasing Document",
+     "@sap.quickinfo": "Purchasing Document Number",
+     "notNull": true
+    },
+    "PurchasingDocumentCategory": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purch. Doc. Category",
+     "@sap.quickinfo": "Purchasing Document Category"
+    },
+    "PurchasingDocumentItemText": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Short Text"
+    },
+    "Material": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Material",
+     "@sap.quickinfo": "Material Number"
+    },
+    "ManufacturerMaterial": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Material",
+     "@sap.quickinfo": "Manufacturer Material"
+    },
+    "ManufacturerPartNmbr": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Mfr Part Number",
+     "@sap.quickinfo": "Manufacturer Part Number"
+    },
+    "Manufacturer": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Manufacturer",
+     "@sap.quickinfo": "Number of a Manufacturer"
+    },
+    "MaterialGroup": {
+     "type": "cds.String",
+     "length": 9,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Material Group"
+    },
+    "Plant": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Plant"
+    },
+    "ManualDeliveryAddressID": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Address",
+     "@sap.quickinfo": "Manual address number in purchasing document item"
+    },
+    "ReferenceDeliveryAddressID": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Address",
+     "@sap.quickinfo": "Number of delivery address"
+    },
+    "IncotermsClassification": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Incoterms",
+     "@sap.quickinfo": "Incoterms (Part 1)"
+    },
+    "IncotermsTransferLocation": {
+     "type": "cds.String",
+     "length": 28,
+     "@sap.label": "Incoterms (Part 2)"
+    },
+    "IncotermsLocation1": {
+     "type": "cds.String",
+     "length": 70,
+     "@sap.label": "Incoterms Location 1"
+    },
+    "IncotermsLocation2": {
+     "type": "cds.String",
+     "length": 70,
+     "@sap.label": "Incoterms Location 2"
+    },
+    "ScheduleLineDeliveryDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Delivery Date"
+    },
+    "ScheduleLineOrderQuantity": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.unit": "OrderQuantityUnit",
+     "@sap.label": "Requested Quantity"
+    },
+    "OrderQuantityUnit": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "Order Unit",
+     "@sap.quickinfo": "Purchase Order Unit of Measure",
+     "@sap.semantics": "unit-of-measure"
+    },
+    "OrderItemQtyToBaseQtyNmrtr": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 0,
+     "@sap.label": "Equal To",
+     "@sap.quickinfo": "Numerator for Conversion of Order Unit to Base Unit"
+    },
+    "OrderItemQtyToBaseQtyDnmntr": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 0,
+     "@sap.label": "Denominator",
+     "@sap.quickinfo": "Denominator for Conversion of Order Unit to Base Unit"
+    },
+    "BaseUnit": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "Base Unit of Measure",
+     "@sap.semantics": "unit-of-measure"
+    },
+    "PurchaseRequisition": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purchase Requisition",
+     "@sap.quickinfo": "Purchase Requisition Number"
+    },
+    "PurchaseRequisitionItem": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Item of requisition",
+     "@sap.quickinfo": "Item Number of Purchase Requisition"
+    },
+    "IsInfoRecordUpdated": {
+     "type": "cds.Boolean",
+     "@sap.label": "Info Record Update",
+     "@sap.quickinfo": "Indicator for Info Record Update"
+    }
+   }
+  },
+  "API_RFQ_PROCESS_SRV.ChangeStatusExportParameters": {
+   "kind": "type",
+   "@cds.external": true,
+   "elements": {
+    "RFQLifecycleStatus": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "RFQ Lifecycle Status",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    }
+   }
+  },
+  "API_RFQ_PROCESS_SRV.Complete": {
+   "kind": "action",
+   "@cds.external": true,
+   "params": {
+    "RequestForQuotation": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Request for Quotation"
+    }
+   },
+   "returns": {
+    "type": "API_RFQ_PROCESS_SRV.ChangeStatusExportParameters"
+   }
+  },
+  "API_RFQ_PROCESS_SRV.Cancel": {
+   "kind": "action",
+   "@cds.external": true,
+   "params": {
+    "RequestForQuotation": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Request for Quotation"
+    }
+   },
+   "returns": {
+    "type": "API_RFQ_PROCESS_SRV.ChangeStatusExportParameters"
+   }
+  },
+  "API_RFQ_PROCESS_SRV.SubmitForApproval": {
+   "kind": "action",
+   "@cds.external": true,
+   "params": {
+    "RequestForQuotation": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Request for Quotation"
+    }
+   },
+   "returns": {
+    "type": "API_RFQ_PROCESS_SRV.ChangeStatusExportParameters"
+   }
+  }
+ }
+}

@@ -1,0 +1,15 @@
+POST http://localhost:4004/catlog/Students
+ Content-Type: application/json
+
+ {
+     "Name"   : "",
+     "Age"    : 22
+ }
+
+ DELETE  http://localhost:4004/catlog/Students
+ Content-Type: application/json
+
+ {
+     "Name"   : "",
+     "Age"    : 22
+ }

@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        id="dressDialog"
+        title="Dress Details"
+        draggable="true"
+        resizable="true"
+    >
+        <Label text="Dress" />
+        <Input
+            id="casualDress"
+            value="{addModel>/name}"
+        />
+
+        <Label text="Amount" />
+        <Input
+            id="longDress"
+            value="{addModel>/amount}"
+        />
+
+        <Label text="Dress Size" />
+        <Input
+            id="longDress1"
+            value="{addModel>/size}"
+        />
+
+        <beginButton>
+            <Button
+                text="Submit"
+                press=".onSubmit"
+            />
+        </beginButton>
+
+        <endButton>
+            <Button
+                text="Close"
+                press=".onClose"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

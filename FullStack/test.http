@@ -1,0 +1,89 @@
+POST http://localhost:4004/catalog/Students
+Content-Type: application/json
+
+{
+     "Name"  : "Priya",
+      "Age"   : "23",
+      "gender"     : "Male",
+      "phone"      : "1234567890",
+      "parentName" : "Mrs. Sharma"
+}
+
+###
+GET http://localhost:4004/catalog/Students
+Content-Type: application/json
+Authorization: Basic vikas:vikas
+###
+GET http://localhost:4004/catalog/Students?$filter=class_name eq '12th' and class_section eq 'B'
+Content-Type: application/json
+Authorization: Basic vikas:vikas
+
+###
+DELETE http://localhost:4004/catalog/Students('5')
+Content-Type: application/json
+
+###
+PUT http://localhost:4004/catalog/Students('15f69a5f-819f-4cf7-b6b2-56601f219dbb')
+Content-Type: application/json
+
+{
+      "Name": "Priya",
+      "Age": 23,
+      "gender": "Female",
+      "parentName": "Mrs. Sharma",
+      "phone": "1234567890"
+}
+
+###TEACHER ENTITY###
+
+POST http://localhost:4004/catalog/Teachers
+Content-Type: application/json
+
+{
+     "name"          : "Rakesh",
+    "qualification" : "MA.Bed",
+    "experience"    : 4,
+    "phone"         : "1232123211"
+}
+
+###
+GET  http://localhost:4004/catalog/Teachers
+Content-Type: application/json
+
+###
+POST http://localhost:4004/catalog/Courses
+Content-Type: application/json
+
+{
+    "title"   : "BTP",
+    "code"    : "1234"
+}
+
+###
+GET  http://localhost:4004/catalog/Courses
+Content-Type: application/json
+
+###
+GET  http://localhost:4004/catalog/UserInfo
+# Content-Type: application/json
+
+
+###Classes ENTITY###
+POST http://localhost:4004/catalog/Classes
+Content-Type: application/json
+Authorization: Basic vikas:vikas
+
+{
+    "name"     : "11th",
+    "section"  : "C",
+    "strength" : 112
+}
+
+#### get call
+GET http://localhost:4004/catalog/Classes
+Content-Type: application/json
+Authorization: Basic vikas:vikas
+
+###Action for Atendance
+POST http://localhost:4004/catalog/UpdateAttendance?studentID=37c77548-1a10-4a6c-8221-6432c4c4fe02&status=A
+Authorization: Basic vikas:vikas

@@ -1,0 +1,44 @@
+{
+  "xsappname": "FullStack",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Admin access"
+    },
+    {
+      "name": "$XSAPPNAME.Teacher",
+      "description": "Teacher access"
+    },
+    {
+      "name": "$XSAPPNAME.Student",
+      "description": "Student access"
+    }
+  ],
+
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Administrator Role",
+      "scope-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "Teacher",
+      "description": "Teacher Role",
+      "scope-references": [
+        "$XSAPPNAME.Teacher"
+      ]
+    },
+    {
+      "name": "Student",
+      "description": "Student Role",
+      "scope-references": [
+        "$XSAPPNAME.Student"
+      ]
+    }
+  ],
+    "attributes": [],
+      "authorities-inheritance": false
+}

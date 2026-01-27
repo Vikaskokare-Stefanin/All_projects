@@ -1,0 +1,10 @@
+{
+    "folders": [
+        {
+            "path": "samplecap"
+        }
+    ],
+    "settings": {
+        "SAP HANA Database Explorer.ShowXsAdvancedConnections": true
+    }
+}

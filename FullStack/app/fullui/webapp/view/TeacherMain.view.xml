@@ -1,0 +1,165 @@
+<mvc:View
+    controllerName="fullui.com.fullui.controller.TeacherMain"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+>
+    <Page
+        id="TeacherMain"
+        title="{i18n>teacherDetail}"
+        showNavButton="true"
+        navButtonPress="onNavButtonDashFromTeacher"
+    >
+        <content>
+            <fb:FilterBar
+                id="filterbarTeacher"
+                persistencyKey="myPersKey"
+                useToolbar="false"
+                search=".onSearch"
+                filterChange=".onFilterChange"
+                afterVariantLoad=".onAfterVariantLoad"
+            >
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem
+                        name="Name"
+                        label="Name"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="Name"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: '/ProductNames',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="Age"
+                        label="Age"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="Age"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: '/ProductCategories',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        name="State"
+                        label="State"
+                        groupName="Group1"
+                        visibleInFilterBar="true"
+                    >
+                        <fb:control>
+                            <MultiComboBox
+                                name="State"
+                                selectionChange=".onSelectionChange"
+                                items="{
+												path: '/ProductSuppliers',
+												templateShareable: true
+											}"
+                            >
+                                <core:Item
+                                    key="{key}"
+                                    text="{name}"
+                                />
+                            </MultiComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </content>
+
+        <Table
+            id="idProductsTableTacherMain"
+            inset="false"
+            mode="SingleSelectLeft"
+            items="{newTeacherModel>/}"
+        >
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="{i18n>teacherDetail}" />
+                    <ToolbarSpacer />
+
+                    <Button
+                        press="AddTeach"
+                        text="Add New Teacher"
+                    />
+                    <Button
+                        press="UpdateTeacher"
+                        text="Update Details"
+                    />
+                    <Button
+                        press="AssignToCourse"
+                        text="Assign to Course"
+                    />
+                    <Button
+                        press="ViewWolrload"
+                        text="View Workload"
+                    />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="Name" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Qualification" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Experince" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text text="Phone" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem
+                    vAlign="Middle"
+                    type="Navigation"
+                    press="onStudentSelect"
+                >
+                    <cells>
+                        <ObjectIdentifier title="{newTeacherModel>name}" />
+                        <Text text="{newTeacherModel>qualification}" />
+                        <Text text="{newTeacherModel>experience} YEARS" />
+                        <Text text="{newTeacherModel>phone}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

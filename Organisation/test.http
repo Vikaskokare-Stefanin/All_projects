@@ -1,0 +1,59 @@
+POST http://localhost:4004/catlog/Organisations
+Content-Type: application/json
+
+{
+    
+      "name"           : "Stefanini",
+      "registrationNo" : "E-AHSBHDFBDBF12345",
+      "gstNo"          : "ABCD12234562",
+      "type"           : "Pvt Ltd",
+      "industry"       : "IT",
+      "email"          : "stefanini@gmail.com",
+      "phone"          : "1234567890",
+      "address"        : "ABC",
+      "city"           : "XYZ",
+      "state"          : "MH",
+      "country"        : "IND"
+}
+
+###
+GET  http://localhost:4004/catlog/Organisations
+Content-Type: application/json
+
+###
+
+POST http://localhost:4004/catlog/Employees
+Content-Type: application/json
+
+{
+     "firstName"    : "Vikas",
+      "lastName"     : "Kokare",
+      "gender"       : "Male",
+      "email"        : "vikas@gmail.com",
+      "phone"        : "1236547892",
+      "dateOfBirth"  : "2006-05-05",
+      "position"     : "Intern",
+      "salary"       : "25000",
+      "joiningDate"  :"2025-11-17"
+}
+
+####
+GEt http://localhost:4004/catlog/Employees?$expand=organisation
+Content-Type: application/json
+
+####
+DELETE  http://localhost:4004/catlog/Employees('EMP-4')
+Content-Type: application/json
+
+
+###
+PUT http://localhost:4004/catlog/Employees('EMP-3')
+Content-Type: application/json
+
+{
+"organisation_ID":"62010707-5209-4f96-8296-3871e2737874"
+}
+
+####
+DELETE  http://localhost:4004/catlog/Employees('EMP-EMP-11')
+

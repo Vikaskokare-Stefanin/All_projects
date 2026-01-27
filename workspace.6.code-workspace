@@ -1,0 +1,10 @@
+{
+    "folders": [
+        {
+            "path": "FullStack"
+        }
+    ],
+    "settings": {
+        "SAP HANA Database Explorer.ShowXsAdvancedConnections": true
+    }
+}
