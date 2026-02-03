@@ -1,16 +1,14 @@
-POST http://localhost:4004/support/Tickets
+POST http://localhost:4004/odata/v4/support/Tickets
 Content-Type: application/json
 
 {
-  "ticketNumber": 1,
-  "subject": "WIFI Issue",
-  "description": "Office WiFi is not working since morning",
+  "subject": "WiFi Not Working",
+  "description": "<p>Office WiFi is not connecting</p>",
   "status": "N",
   "priority": "Medium",
-  "category": "Network",
-  "subCategory": "WiFi Connectivity",
-  "assignedGroup": "IT Support",
-  "slaDueDate": "2026-01-26T18:00:00Z"
+  "category": "Network Issue",
+  "subCategory": "WiFi",
+  "assignedGroup": "Network Team"
 }
 
 ###  
@@ -24,3 +22,12 @@ Content-Type: application/json
 {
   "status":"R"
 }
+
+###
+POST http://localhost:4004/support/sendTicketMail
+Content-Type: application/json
+
+{
+  "ticketNumber": "0001"
+}
+

@@ -31,7 +31,8 @@ entity Tickets : cuid, managed {
      * Note: Auto-increment logic to be handled via DB sequence
      * or 'before create' handler in Phase 2.
      */
-    ticketNumber  : String(4);
+    @assert.unique
+    ticketNumber  : String(10) @readonly;
 
     subject       : String(100);
 
@@ -93,4 +94,10 @@ entity BusinessHours : cuid {
 entity HolidayCalendar : cuid {
     date        : Date;
     description : String(100);
+}
+
+
+entity TicketCounter {
+    key name  : String;
+        value : Integer;
 }

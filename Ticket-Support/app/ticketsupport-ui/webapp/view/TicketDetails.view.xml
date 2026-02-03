@@ -1,0 +1,74 @@
+<mvc:View
+    controllerName="com.ticketsupport.ticketsupportui.controller.TicketDetails"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        title="Ticket Details"
+        id="TicketDetails"
+    >
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm
+                id="SimpleFormDisplay354wide"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="Details"
+                labelSpanXL="12"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <Label text="Ticket Number" />
+                    <Input
+                        id="nameText"
+                        value="{FormModelBindedF>/ticketNumber}"
+                    />
+                    <Label text="Subject" />
+                    <Input value="{FormModelBindedF>/subject}" />
+                    <Label text="Description" />
+                    <!-- <Input value="{FormModelBindedF>/description}" /> -->
+                    <FormattedText htmlText="{FormModelBindedF>/description}" />
+                    <Label text="Status" />
+                    <Input
+                        id="countryText"
+                        value="{path:'FormModelBindedF>/status', formatter:'.formatter.statusText'}"
+                    />
+                    <Label text="Priority" />
+                    <Input
+                        id="countryTextPriority"
+                        value="{FormModelBindedF>/priority}"
+                    />
+                    <Label text="Category" />
+                    <Input
+                        id="countryTextcategory"
+                        value="{FormModelBindedF>/category}"
+                    />
+                    <Label text="Sub Category" />
+                    <Input
+                        id="countryTextsubCategory"
+                        value="{FormModelBindedF>/subCategory}"
+                    />
+                    <Label text="Client" />
+                    <Input
+                        id="assignedGroupClient"
+                        value="{FormModelBindedF>/assignedGroup}"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+    </Page>
+</mvc:View>

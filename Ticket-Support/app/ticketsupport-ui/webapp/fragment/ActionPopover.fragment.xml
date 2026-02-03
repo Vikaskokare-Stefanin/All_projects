@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        id="actionPopover"
+        placement="Bottom"
+        showHeader="false"
+    >
+        <VBox class="sapUiSmallMargin">
+            <Button
+                text="View Details"
+                icon="sap-icon://inspect"
+                press="onViewDetails"
+                width="100%"
+            />
+            <Button
+                text="Close Ticket"
+                icon="sap-icon://accept"
+                type="Accept"
+                press="onCloseTicket"
+                width="100%"
+            />
+            <Button
+                text="Delete Ticket"
+                icon="sap-icon://delete"
+                type="Reject"
+                press="onDeleteRow"
+                width="100%"
+            />
+        </VBox>
+    </Popover>
+</core:FragmentDefinition>

@@ -4,6 +4,8 @@
     xmlns:core="sap.ui.core"
     xmlns:p="sap.m.plugins"
     xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
 >
     <Page
         id="page"
@@ -24,6 +26,7 @@
                 >
                     <Table
                         id="idProductsTable"
+                        sticky="HeaderToolbar,ColumnHeaders"
                         inset="false"
                         items="{
 			path: '/Tickets',
@@ -81,6 +84,27 @@
                                         press="onToggleInfoToolbar"
                                     /> -->
                                     <Button
+                                        press="onOpenExcelUpload"
+                                        text="Import Excel"
+                                    />
+                                    <!-- <u:FileUploader
+                                        id="excelUploader"
+                                        visible="false"
+                                        fileType="xlsx,xls,csv"
+                                        change="onEmportExcel"
+                                    /> -->
+                                    <u:FileUploader
+                                        id="excelUploader"
+                                        name="myFileUpload"
+                                        visible="false"
+                                        tooltip="Upload your file to the local server"
+                                        change="onEmportExcel"
+                                    />
+                                    <Button
+                                        press="onDownloadExcel"
+                                        text="Export Excel"
+                                    />
+                                    <Button
                                         press="onOpenCreateTicket"
                                         text="Create Ticket"
                                     />
@@ -97,9 +121,9 @@
                         <columns>
                             <Column width="12em">
                                 <Text text="Ticket ID" />
-                                <dependents>
+                                <!-- <dependents>
                                     <p:ColumnAIAction press="onAIActionPress" />
-                                </dependents>
+                                </dependents> -->
                             </Column>
                             <Column
                                 minScreenWidth="Tablet"
@@ -112,6 +136,12 @@
                                 demandPopin="true"
                             >
                                 <Text text="Category" />
+                            </Column>
+                            <Column
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                            >
+                                <Text text="Client Name" />
                             </Column>
                             <Column
                                 minScreenWidth="Desktop"
@@ -141,18 +171,23 @@
                                     />
                                     <Text text="{category}" />
                                     <Text text="{assignedGroup}" />
-
+                                    <Text text="{createdBy}" />
                                     <ObjectStatus
                                         text="{path:'status', formatter: '.formatter.statusText'}"
                                         state="{path:'status', formatter: '.formatter.statusState'}"
                                     />
-                                    <!-- <Text text="{priority}" /> -->
+
                                     <ObjectStatus
                                         text="{priority}"
                                         state="{path:'priority', formatter: '.formatter.priorityState'}"
                                         inverted="true"
                                     />
-                                    <HBox
+                                    <Button
+                                        icon="sap-icon://overflow"
+                                        type="Transparent"
+                                        press="onMoreActionsPress"
+                                    />
+                                    <!-- <HBox
                                         justifyContent="Center"
                                         alignItems="Center"
                                         width="100%"
@@ -168,7 +203,7 @@
                                             type="Reject"
                                             press="onDeleteRow"
                                         />
-                                    </HBox>
+                                    </HBox> -->
                                 </cells>
                             </ColumnListItem>
                         </items>

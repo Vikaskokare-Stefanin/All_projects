@@ -1,4 +1,5 @@
 const cds = require('@sap/cds');
+const { sendMail } = require("./utils/email");
 
 module.exports = cds.service.impl(async function () {
 
@@ -120,22 +121,71 @@ module.exports = cds.service.impl(async function () {
      * Action: Unbound action called by Shell Plugin
      */
 
-    this.before("CREATE", Tickets, async (req) => {
+    // number creation 
 
-        // 1️⃣ Get latest ticket number
-        const result = await SELECT.one
-            .from(Tickets)
-            .columns`max(ticketNumber) as maxTicket`;
+    // this.before("CREATE", "Tickets", async (req) => {
+    //     const tx = cds.transaction(req);
 
-        let nextNumber = 1;
+    //     // Step 1: Read counter
+    //     const counter = await tx.run(
+    //         SELECT.one.from('TicketCounter').where({ name: 'TICKET' })
+    //     );
 
-        if (result && result.maxTicket) {
-            nextNumber = parseInt(result.maxTicket, 10) + 1;
+    //     const nextNumber = counter.value + 1;
+
+    //     // Step 2: Update counter (same transaction = safe)
+    //     await tx.run(
+    //         UPDATE('TicketCounter')
+    //             .set({ value: nextNumber })
+    //             .where({ name: 'TICKET' })
+    //     );
+
+    //     // Step 3: Assign ticket number
+    //     req.data.ticketNumber = String(nextNumber).padStart(4, '0');
+    // });
+
+
+    // Trail 
+    this.before("CREATE", "Tickets", async (req) => {
+        // Handle both single record and array of records
+        const records = Array.isArray(req.data) ? req.data : [req.data];
+
+        const tx = cds.transaction(req);
+
+        try {
+            // Lock the counter row to prevent race conditions
+            const counter = await tx.run(
+                SELECT.one.from('TicketCounter')
+                    .where({ name: 'TICKET' })
+                    .forUpdate() // This locks the row
+            );
+
+            if (!counter) {
+                req.reject(500, 'TicketCounter not initialized');
+                return;
+            }
+
+            let nextNumber = counter.value;
+
+            // Assign sequential ticket numbers to all records
+            for (const record of records) {
+                nextNumber++;
+                record.ticketNumber = String(nextNumber).padStart(4, '0');
+            }
+
+            // Update the counter with the final value
+            await tx.run(
+                UPDATE('TicketCounter')
+                    .set({ value: nextNumber })
+                    .where({ name: 'TICKET' })
+            );
+
+        } catch (error) {
+            await tx.rollback();
+            req.reject(500, `Error generating ticket numbers: ${error.message}`);
         }
-
-        // 2️⃣ Convert to 4-digit format
-        req.data.ticketNumber = String(nextNumber).padStart(4, "0");
     });
+
 
     this.on('createTicketWithContext', async (req) => {
         const { subject, description, priority, appContext, consoleLogs } = req.data;
@@ -235,4 +285,50 @@ module.exports = cds.service.impl(async function () {
             .where({ ID });
         return true;
     });
+
+    //Email
+    this.on("sendTicketMail", async (req) => {
+
+        const { ticketNumber } = req.data;
+
+        const ticket = await SELECT.one.from(Tickets)
+            .where({ ticketNumber });
+
+        if (!ticket) {
+            req.reject(404, "Ticket not found");
+        }
+
+        await sendMail(
+            "vikasskokarevk100@gmail.com",
+            `Ticket Created: ${ticket.ticketNumber}`,
+            `<p>Your ticket <b>${ticket.subject}</b> has been created.</p>`
+        );
+
+        return true;
+    });
+
+    this.after("CREATE", Tickets, async (data, req) => {
+
+        try {
+            // data contains the CREATED ticket
+            await sendMail(
+                "user@example.com", // receiver (can be dynamic)
+                `Ticket Created: ${data.ticketNumber}`,
+                `
+                <h3>Ticket Created Successfully</h3>
+                <p><b>Ticket No:</b> ${data.ticketNumber}</p>
+                <p><b>Subject:</b> ${data.subject}</p>
+                <p><b>Priority:</b> ${data.priority}</p>
+                <p><b>Status:</b> New</p>
+                `
+            );
+
+            console.log("📩 Email sent for ticket:", data.ticketNumber);
+
+        } catch (err) {
+            console.error("❌ Email sending failed", err);
+            // DO NOT reject → ticket is already created
+        }
+    });
+
 });

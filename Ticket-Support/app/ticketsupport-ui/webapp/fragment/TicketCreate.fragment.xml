@@ -37,7 +37,7 @@
             >
                 <form:content>
                     <Label
-                        text="Subject"
+                        text="Issue"
                         required="true"
                         labelFor="ticketSubjectInput"
                     />

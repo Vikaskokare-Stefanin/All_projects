@@ -1,4 +1,4 @@
-using { my.support as my } from '../db/schema';
+using {my.support as my} from '../db/schema';
 
 service TicketService @(path: '/support') {
 
@@ -9,26 +9,27 @@ service TicketService @(path: '/support') {
      * 2. Attachments handling before final submission.
      */
     // @odata.draft.enabled
-    entity Tickets as projection on my.Tickets {
-        *,
-        events : redirected to TicketEvents
-    };
+    entity Tickets            as
+        projection on my.Tickets {
+            *,
+            events : redirected to TicketEvents
+        };
 
     /**
      * Audit Trail
      * Exposed as Read-Only to ensure integrity of the history.
      */
- 
-    entity TicketEvents as projection on my.TicketEvents;
+
+    entity TicketEvents       as projection on my.TicketEvents;
 
     // --------------------------------------------------------------------------
     // Configuration Entities (SLA & Routing)
     // --------------------------------------------------------------------------
-    
+
     entity ServiceLevelConfig as projection on my.ServiceLevelConfig;
-    entity RoutingRules as projection on my.RoutingRules;
-    entity BusinessHours as projection on my.BusinessHours;
-    entity HolidayCalendar as projection on my.HolidayCalendar;
+    entity RoutingRules       as projection on my.RoutingRules;
+    entity BusinessHours      as projection on my.BusinessHours;
+    entity HolidayCalendar    as projection on my.HolidayCalendar;
 
     // --------------------------------------------------------------------------
     // Custom Actions & Functions (Automation Triggers)
@@ -39,13 +40,11 @@ service TicketService @(path: '/support') {
      * Unbound action to create a ticket explicitly from the Shell Plugin.
      * Accepts technical context (browser logs, hash) separate from user input.
      */
-    action createTicketWithContext(
-        subject     : String(100),
-        description : LargeString,
-        priority    : my.Priority,
-        appContext  : String,
-        consoleLogs : LargeString
-    ) returns Tickets;
+    action createTicketWithContext(subject: String(100),
+                                   description: LargeString,
+                                   priority: my.Priority,
+                                   appContext: String,
+                                   consoleLogs: LargeString) returns Tickets;
 
     /**
      * Phase 2.1: SLA Breach Monitor
@@ -54,5 +53,7 @@ service TicketService @(path: '/support') {
      */
     action checkSlaBreaches();
 
-        action closeTicket(ID : UUID) returns Boolean;
+    action closeTicket(ID: UUID)                             returns Boolean;
+    action sendTicketMail(ticketNumber: String);
+
 }
